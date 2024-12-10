@@ -1,0 +1,546 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --primary-color: #0070f3;
+  --secondary-color: #5e5e5e;
+  --background-color: #f5f5f7;
+  --text-color: #1d1d1f;
+  --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --smooth-transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: var(--text-color);
+}
+
+html,
+body {
+  background-color: #f0f4f8;
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+p {
+  background-color: transparent;
+}
+
+/* Main 페이지 스타일 */
+.main-container {
+  text-align: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.main-title {
+  font-size: 2rem;
+  color: #333;
+}
+
+/* 타이틀 스타일 */
+.title-style {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  color: var(--text-color);
+  text-align: center;
+  margin: 2.5rem 0;
+  letter-spacing: -1px;
+  background: linear-gradient(45deg, #0070f3, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientFlow 5s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 서브타이틀 스타일 */
+.sub-title-style {
+  font-size: 28px;
+  color: #86868b;
+  text-align: center;
+  margin: 24px 0;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+}
+
+/* 설명 텍스트 스타일 */
+.description-style {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2.5rem;
+  border-radius: 20px;
+  line-height: 1.7;
+  box-shadow: var(--card-shadow);
+  transform: perspective(1000px);
+  transition: var(--smooth-transition);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.description-style:hover {
+  transform: scale(1.02) rotateX(3deg);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.highlight {
+  color: #0070f3;
+  font-weight: 600;
+  position: relative;
+}
+
+.highlight::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(45deg, #0070f3, #00d4ff);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.highlight:hover::after {
+  transform: scaleX(1);
+}
+
+/* 버튼 스타일 */
+
+.stButton button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #007aff, #5ac8fa);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 15px 10vw; /* 가로 padding을 뷰포트 너비 비율로 설정 */
+  border: none;
+  border-radius: 12px;
+  transition: var(--smooth-transition);
+  box-shadow: 0 10px 25px rgba(0, 122, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: -0.5px;
+  text-transform: none;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: buttonAppear 0.9s cubic-bezier(0.25, 0.1, 0.25, 1) 0.5s forwards;
+}
+
+/* 미디어 쿼리를 사용해 작은 화면에서 padding 값 조정 */
+@media (max-width: 768px) {
+  .stButton button {
+    padding: 10px 5vw; /* 작은 화면에서는 더 적은 가로 padding */
+  }
+}
+
+.stButton button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: var(--smooth-transition);
+}
+
+.stButton button:hover::before {
+  left: 100%;
+}
+
+.stButton button:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 112, 243, 0.4);
+  background-color: #0051c3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Additional interactive and animation styles */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animated-section {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .title-style {
+    font-size: 2.2rem;
+  }
+
+  .description-style {
+    padding: 1.5rem;
+  }
+}
+
+/* 카드 스타일 */
+.card-style {
+  background-color: white;
+  border-radius: 20px;
+  padding: 24px;
+  margin: 16px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card-style:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 섹션 스타일 */
+.section {
+  margin: 40px 0;
+  padding: 0 24px;
+}
+
+/* 비디오 플레이어 스타일 */
+.stVideo {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 파일 업로더 스타일 */
+.stFileUploader {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  border: 2px dashed #06c;
+}
+
+/* 진행 상태바 스타일 */
+.stProgress {
+  height: 6px;
+  border-radius: 3px;
+  background-color: #e5e5e5;
+}
+
+.stProgress > div {
+  background-color: #06c;
+}
+
+/* 사이드바 스타일 */
+.css-1d391kg {
+  background-color: #f5f5f7;
+}
+
+/* 선택 박스 스타일 */
+.stSelectbox {
+  border-radius: 12px;
+}
+
+/* 동작 설명 컨테이너 스타일 */
+.pose-description-container {
+  background-color: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 16px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pose-description-container h3 {
+  color: #1d1d1f;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #e5e5e5;
+  padding-bottom: 8px;
+}
+
+/* 리스트 스타일 */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  margin: 8px 0;
+  padding-left: 24px;
+  position: relative;
+}
+
+li:before {
+  content: "•";
+  color: #06c;
+  position: absolute;
+  left: 8px;
+}
+
+/* 메인 컨테이너 스타일 */
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+/* 그리드 레이아웃 스타일 */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin: 32px 0;
+}
+
+/* 결과 카드 스타일 */
+.result-card {
+  background-color: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 16px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 알림 스타일 */
+.stAlert {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Page1 Specific Styles */
+.page1-container {
+  background: linear-gradient(145deg, #f2f2f7, #ffffff);
+  padding: 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
+
+.page1-text {
+  font-size: 1.3rem;
+  color: #1d1d1f;
+  text-align: center;
+  max-width: 700px;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Title Animation */
+.title-style {
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 700;
+  text-align: center;
+  color: #1d1d1f;
+  background: linear-gradient(45deg, #007aff, #5ac8fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: scale(0.9);
+  animation: titleReveal 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes titleReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Button Styles */
+.stButton button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 550px;
+  height: 48px;
+  padding: 0 20px;
+  background: linear-gradient(135deg, #007aff, #5ac8fa);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  transition: var(--smooth-transition);
+  box-shadow: 0 10px 25px rgba(0, 122, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: -0.5px;
+  text-transform: none;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: buttonAppear 0.9s cubic-bezier(0.25, 0.1, 0.25, 1) 0.5s forwards;
+}
+
+@keyframes buttonAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stButton button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: rotate(-45deg);
+  transition: var(--smooth-transition);
+  opacity: 0;
+}
+
+.stButton button:hover::before {
+  opacity: 1;
+}
+
+.stButton button:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 122, 255, 0.3);
+}
+
+.stButton button:active {
+  transform: scale(0.95);
+}
+
+/* Card Styles */
+.description-container {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  margin-top: 30px;
+  box-shadow: var(--card-shadow);
+  transition: var(--smooth-transition);
+  opacity: 0;
+  transform: translateY(30px) rotateX(-10deg);
+  animation: cardAppear 1s cubic-bezier(0.25, 0.1, 0.25, 1) 0.7s forwards;
+}
+
+@keyframes cardAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) rotateX(-10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+.description-container:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.description-container h3 {
+  color: #007aff;
+  border-bottom: 2px solid #007aff;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .page1-container {
+    padding: 20px 15px;
+  }
+
+  .page1-text {
+    font-size: 1.1rem;
+  }
+
+  .title-style {
+    font-size: 2.2rem;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.description-container {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.description-container h3 {
+  color: #333;
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.page2-container {
+  background-color: #ffe4e1;
+  padding: 20px;
+}
+
+.page2-text {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.page3-container {
+  background-color: #e6e6fa;
+  padding: 20px;
+}
+
+.page3-text {
+  font-size: 1.2rem;
+  color: #777;
+}
